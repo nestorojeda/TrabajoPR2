@@ -20,6 +20,7 @@ public class ArbolBinario {
     }
 
     Nodo raiz;
+    int contador = 0;
 
     public void insertar(int valor){
         raiz = añadirAux(raiz, valor);
@@ -32,6 +33,7 @@ public class ArbolBinario {
 
     private Nodo añadirAux(Nodo raiz, int valor) {
         if(raiz == null){
+            contador++;
             return new Nodo(valor);
         }
         if(valor > raiz.dato){
@@ -49,7 +51,7 @@ public class ArbolBinario {
             return true;
         }
         if (raiz == null){
-         return  false; // el arbol esta vacio
+         return false; // el arbol esta vacio
         }
         if(valor < raiz.dato){
             return buscarAux(raiz.izquierda, valor);
@@ -58,4 +60,9 @@ public class ArbolBinario {
         }
     }
 
+    public void vaciar(){
+        this.raiz = null;
+    }
+
+    public int cardinal(){ return contador;}
 }
