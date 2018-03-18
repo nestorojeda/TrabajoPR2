@@ -1,6 +1,6 @@
-package ContenedorDeEnteros.practica1;
+package ContenedorDeEnteros;
 
-public class ListaEncadenada {
+public class ListaEncadenada implements ContenedorDeEnteros{
     private Nodo first;
     private int count;
 

@@ -1,6 +1,6 @@
-package ContenedorDeEnteros.practica2;
+package ContenedorDeEnteros;
 
-public class VectorOrdenado {
+public class VectorOrdenado implements ContenedorDeEnteros {
 
     //declaramos los atributos del contenedor
     private int[] contenedor;

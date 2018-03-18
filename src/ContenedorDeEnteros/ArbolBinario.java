@@ -1,6 +1,6 @@
-package ContenedorDeEnteros.practica3;
+package ContenedorDeEnteros;
 
-public class ArbolBinario {
+public class ArbolBinario implements ContenedorDeEnteros{
     class Nodo{
         int dato;
         Nodo derecha;
@@ -21,8 +21,9 @@ public class ArbolBinario {
     private Nodo raiz;
     private int contador = 0;
 
-    public void insertar(int valor){
+    public boolean insertar(int valor){
         raiz = añadirAux(raiz, valor);
+        return true;
     }
 
     public boolean buscar(int valor){
