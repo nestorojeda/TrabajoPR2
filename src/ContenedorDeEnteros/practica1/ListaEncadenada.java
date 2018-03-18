@@ -1,4 +1,4 @@
-package practica1;
+package ContenedorDeEnteros.practica1;
 
 public class ListaEncadenada {
     private Nodo first;

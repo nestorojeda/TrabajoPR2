@@ -1,4 +1,4 @@
-package practica2;
+package ContenedorDeEnteros.practica2;
 
 public class VectorOrdenado {
 

@@ -1,5 +1,4 @@
-package practica3;
-
+package ContenedorDeEnteros.practica3;
 
 public class ArbolBinario {
     class Nodo{
@@ -19,8 +18,8 @@ public class ArbolBinario {
         }
     }
 
-    Nodo raiz;
-    int contador = 0;
+    private Nodo raiz;
+    private int contador = 0;
 
     public void insertar(int valor){
         raiz = añadirAux(raiz, valor);
