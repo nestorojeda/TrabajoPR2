@@ -30,6 +30,11 @@ public class ArbolBinario implements ContenedorDeEnteros{
         return buscarAux(raiz,valor);
     }
 
+    public boolean extraer(int valor){
+        extraerAux(raiz, valor);
+        return true;
+    }
+
 
     private Nodo añadirAux(Nodo raiz, int valor) {
         if(raiz == null){
@@ -58,6 +63,32 @@ public class ArbolBinario implements ContenedorDeEnteros{
         }else{
             return buscarAux(raiz.derecha, valor);
         }
+    }
+
+    private Nodo extraerAux(Nodo raiz, int valor){
+        if (raiz == null) {
+            return null;
+        }
+
+        if (valor == raiz.dato) {
+            if (raiz.izquierda == null && raiz.derecha == null) {
+                return null;
+            }else if (raiz.izquierda == null) {
+                return raiz.derecha;
+            }else if (raiz.derecha == null) {
+                return raiz.izquierda;
+            }else{
+
+            }
+
+
+        }
+        if (valor < raiz.dato) {
+            raiz.izquierda = extraerAux(raiz.izquierda, valor);
+            return raiz;
+        }
+        raiz.derecha = extraerAux(raiz.derecha, valor);
+        return raiz;
     }
 
     public void vaciar(){
