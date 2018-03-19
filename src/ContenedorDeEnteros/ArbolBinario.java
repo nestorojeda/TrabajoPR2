@@ -35,6 +35,12 @@ public class ArbolBinario implements ContenedorDeEnteros{
         return true;
     }
 
+    public int[] elementos(){
+        int[] res = new int[this.cardinal()];
+        int i = 0;
+        return elementosAux(raiz, res, i);
+    }
+
 
     private Nodo añadirAux(Nodo raiz, int valor) {
         if(raiz == null){
@@ -52,11 +58,11 @@ public class ArbolBinario implements ContenedorDeEnteros{
     }
 
     private boolean buscarAux(Nodo raiz, int valor) {
+        if (raiz == null){
+            return false; // el arbol esta vacio
+        }
         if(valor == raiz.dato){
             return true;
-        }
-        if (raiz == null){
-         return false; // el arbol esta vacio
         }
         if(valor < raiz.dato){
             return buscarAux(raiz.izquierda, valor);
@@ -78,7 +84,7 @@ public class ArbolBinario implements ContenedorDeEnteros{
             }else if (raiz.derecha == null) {
                 return raiz.izquierda;
             }else{
-
+                //falta el caso en el que el nodo que quieres eliminar tiene dos hijos
             }
 
 
@@ -90,10 +96,21 @@ public class ArbolBinario implements ContenedorDeEnteros{
         raiz.derecha = extraerAux(raiz.derecha, valor);
         return raiz;
     }
+    private int[] elementosAux(Nodo raiz, int[] res, int i){
+        if (raiz != null) {
+            elementosAux(raiz.izquierda, res, i);
+            res[i] = raiz.dato;
+            i++;
+            elementosAux(raiz.derecha,res, i);
+        }
+        return  res;
+    }
 
     public void vaciar(){
         this.raiz = null;
     }
 
     public int cardinal(){ return contador;}
+
+
 }
