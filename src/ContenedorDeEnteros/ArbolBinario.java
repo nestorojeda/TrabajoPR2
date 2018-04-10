@@ -11,7 +11,7 @@ public class ArbolBinario implements ContenedorDeEnteros{
             derecha = null;
         }
 
-        public Nodo(int v){
+        private Nodo(int v){
             this.dato = v;
             izquierda = null;
             derecha = null;
@@ -84,7 +84,10 @@ public class ArbolBinario implements ContenedorDeEnteros{
             }else if (raiz.derecha == null) {
                 return raiz.izquierda;
             }else{
-                //falta el caso en el que el nodo que quieres eliminar tiene dos hijos
+                int temp = masPequeño(raiz.derecha);
+                raiz.dato = temp;
+                raiz.derecha = extraerAux(raiz.derecha, temp);
+                return raiz;
             }
 
 
@@ -96,6 +99,15 @@ public class ArbolBinario implements ContenedorDeEnteros{
         raiz.derecha = extraerAux(raiz.derecha, valor);
         return raiz;
     }
+
+    private int masPequeño(Nodo n) {
+        if(n.izquierda == null){
+            return n.dato;
+        }else{
+            return masPequeño(n.izquierda);
+        }
+    }
+
     private int[] elementosAux(Nodo raiz, int[] res, int i){
         if (raiz != null) {
             elementosAux(raiz.izquierda, res, i);
