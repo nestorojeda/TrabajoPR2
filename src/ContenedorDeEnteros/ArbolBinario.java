@@ -31,7 +31,7 @@ public class ArbolBinario implements ContenedorDeEnteros{
     }
 
     public boolean extraer(int valor){
-        extraerAux(raiz, valor);
+        raiz = extraerAux(raiz, valor);
         return true;
     }
 
@@ -72,40 +72,34 @@ public class ArbolBinario implements ContenedorDeEnteros{
     }
 
     private Nodo extraerAux(Nodo raiz, int valor){
-        if (raiz == null) {
-            return null;
-        }
-
-        if (valor == raiz.dato) {
-            if (raiz.izquierda == null && raiz.derecha == null) {
-                return null;
-            }else if (raiz.izquierda == null) {
-                return raiz.derecha;
-            }else if (raiz.derecha == null) {
-                return raiz.izquierda;
-            }else{
-                int temp = masPequeño(raiz.derecha);
-                raiz.dato = temp;
-                raiz.derecha = extraerAux(raiz.derecha, temp);
-                return raiz;
-            }
-
-
-        }
-        if (valor < raiz.dato) {
+        if (raiz == null)  return raiz;
+        if (valor < raiz.dato)
             raiz.izquierda = extraerAux(raiz.izquierda, valor);
-            return raiz;
+        else if (valor > raiz.dato)
+            raiz.derecha = extraerAux(raiz.derecha, valor);
+        else
+        {
+            if (raiz.izquierda == null)
+                return raiz.derecha;
+            else if (raiz.derecha == null)
+                return raiz.izquierda;
+
+            raiz.dato = masPequeño(raiz.derecha);
+            raiz.derecha = extraerAux(raiz.derecha, raiz.dato);
         }
-        raiz.derecha = extraerAux(raiz.derecha, valor);
+
         return raiz;
     }
 
     private int masPequeño(Nodo n) {
-        if(n.izquierda == null){
-            return n.dato;
-        }else{
-            return masPequeño(n.izquierda);
+        int minv = n.dato;
+        while (n.izquierda != null)
+        {
+            minv = n.izquierda.dato;
+            n = n.izquierda;
         }
+        return minv;
+
     }
 
     private int[] elementosAux(Nodo raiz, int[] res, int i){
